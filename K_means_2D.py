@@ -22,29 +22,25 @@ df['y'] = y
 
 # renaming cols
 df.columns = ['x', 'y']
-
+print(df)
 #random values for mean
 random_index = np.random.randint(0, len(df))
-print(random_index)
 random_index1=np.random.randint(0,len(df))
 if random_index == random_index1:
-    while random_index!=random_index1:
+    while random_index==random_index1:
         random_index1 = np.random.randint(0, len(df))
-print(random_index1)
-
-
 
 random_x, random_y = df.iloc[random_index]
 rand_x,rand_y=df.iloc[random_index1]
-print(random_x,random_y)
-print(rand_x,rand_y)
+print("Mean 1:",random_x,random_y)
+print("Mean 2:",rand_x,rand_y)
 df['ed'] = df[['x','y']].apply(eucledian_distance,axis=1)
 df['ed'].head()
 random_x=rand_x
 random_y=rand_y
 df['ed1'] = df[['x','y']].apply(eucledian_distance,axis=1)
 df['ed1'].head()
-print(df)
+
 
 cluster_1 = pd.DataFrame(df[df['ed'] > df['ed1']][['x', 'y']])
 cluster_2 = pd.DataFrame(df[df['ed'] < df['ed1']][['x', 'y']])
